@@ -7,24 +7,118 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:tedarik/main.dart';
+import 'package:tedarik/widgets/login.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('column widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final fcolumn = find.byType(Column);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 2000));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(fcolumn, findsNWidgets(3));
+  });
+
+  testWidgets('row widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final frow = find.byType(Row);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(frow, findsNWidgets(0));
+  });
+
+  testWidgets('positioned widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final fpos = find.byType(Positioned);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(fpos, findsNWidgets(4));
+  });
+
+  testWidgets('text widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final ftext = find.byType(Text);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(ftext, findsNWidgets(5));
+  });
+
+  testWidgets('sizedbox widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final fsized = find.byType(SizedBox);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(fsized, findsNWidgets(4));
+  });
+
+  testWidgets('container widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final fcon = find.byType(Container);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(fcon, findsNWidgets(9));
+  });
+
+  testWidgets('padding widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final fpad = find.byType(Padding);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(fpad, findsNWidgets(11));
+  });
+
+  testWidgets('stack widget count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomePage(),
+      ),
+    );
+
+    final fstack = find.byType(Stack);
+
+    await tester.pump(const Duration(milliseconds: 2000));
+
+    expect(fstack, findsNWidgets(2));
   });
 }
